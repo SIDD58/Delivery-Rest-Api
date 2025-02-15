@@ -43,7 +43,7 @@ npm start
 * `GET` : Get all records of deliveries 
 * `POST` : Create a new delivery record 
 
-#### /projects/id
+#### /deliveries/id
 * `GET` : Get a record of delivery with particular id
 * `PATCH` : Update a delivery record with particular id
 * `DELETE` : Delete a delivery record with particular id
