@@ -6,10 +6,13 @@
 require("dotenv").config();
 const express=require("express");
 const mongoose=require("mongoose");
-mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser:true});
+mongoose.set('debug', true);
+
+// connect to databas
+mongoose.connect(process.env.DATABASE_URL);
 const db=mongoose.connection;
 db.on('error',()=>{console.log("Some error occured")});
-db.once('open',()=>{console.log("Connected to databse")});
+db.once('open',()=>{console.log("Connected to database")});
 const app=express();
 
 // before this databse is connected and ready
@@ -19,6 +22,7 @@ app.use(express.json());
 //Deliveries routes
 const deliveryRoute=require("./routes/delivery");
 app.use("/deliveries",deliveryRoute);
+
 
 
 app.listen(process.env.PORT,()=>{

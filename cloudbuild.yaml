@@ -1,0 +1,36 @@
+
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'docker'
+      - 'build'
+      - '-t'
+      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
+      - '-t'
+      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:$COMMIT_SHA'
+      - '.'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'docker'
+      - 'push'
+      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'docker'
+      - 'push'
+      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:$COMMIT_SHA'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'delivery-api'
+      - '--image'
+      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
+      - '--region'
+      - 'northamerica-northeast2'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+images:
+  - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
+  - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:$COMMIT_SHA'
