@@ -16,7 +16,16 @@ db.once('open',()=>{console.log("Connected to database")});
 const app=express();
 
 // before this databse is connected and ready
-// here we will do our oruting work 
+// here we will do our routing work
+
+// basic route added for the ci/cd deployment using cloud build and cloud run in google cloud 
+
+app.get("/",(req,res)=>{
+    res.send("Hello CI/CD cloud build and cloud run");
+});
+
+
+
 
 app.use(express.json());
 //Deliveries routes
