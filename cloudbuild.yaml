@@ -33,7 +33,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
-      - '--set-env-vars DATABASE_URL="mongodb+srv://sidd58:Naruto58@cluster-1.ywzro.mongodb.net/deliveryDB?retryWrites=true&w=majority&appName=Cluster-1",PORT=8080'
+      #- '--set-env-vars DATABASE_URL="mongodb+srv://sidd58:Naruto58@cluster-1.ywzro.mongodb.net/deliveryDB?retryWrites=true&w=majority&appName=Cluster-1",PORT=8080'
 images:
   - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:latest'
   - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:$COMMIT_SHA'
