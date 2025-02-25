@@ -5,23 +5,20 @@ substitutions:
 
 
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
-      - 'docker'
       - 'build'
       - '-t'
       - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:latest'
       - '-t'
       - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:$COMMIT_SHA'
       - '.'
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
-      - 'docker'
       - 'push'
       - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:latest'
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
-      - 'docker'
       - 'push'
       - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:$COMMIT_SHA'
   - name: 'gcr.io/cloud-builders/gcloud'
