@@ -1,3 +1,8 @@
+substitutions:
+  _REGION: northamerica-northeast2
+  _PROJECT_ID: delivery-api-451403
+  _REPO_NAME: delivery-api-repo
+
 
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -5,35 +10,35 @@ steps:
       - 'docker'
       - 'build'
       - '-t'
-      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:latest'
       - '-t'
-      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:$COMMIT_SHA'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:$COMMIT_SHA'
       - '.'
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'docker'
       - 'push'
-      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:latest'
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'docker'
       - 'push'
-      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:$COMMIT_SHA'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:$COMMIT_SHA'
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
       - 'deploy'
       - 'delivery-api'
       - '--image'
-      - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:latest'
       - '--region'
-      - 'northamerica-northeast2'
+      - '$_REGION'
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
 images:
-  - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
-  - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:$COMMIT_SHA'
+  - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:latest'
+  - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/delivery-api-docker:$COMMIT_SHA'
 
 options:
   logging: 'CLOUD_LOGGING_ONLY'
