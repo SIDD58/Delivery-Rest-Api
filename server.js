@@ -24,6 +24,10 @@ app.get("/",(req,res)=>{
     res.send("Hello CI/CD cloud build and cloud run");
 });
 
+app.get("/health",(req,res)=>{
+    res.send("Health check is successfull");
+});
+
 
 
 
