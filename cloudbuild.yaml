@@ -34,3 +34,6 @@ steps:
 images:
   - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:latest'
   - 'northamerica-northeast2-docker.pkg.dev/delivery-api-451403/delivery-api-repo/delivery-api-docker:$COMMIT_SHA'
+
+options:
+  logging: 'CLOUD_LOGGING_ONLY'
