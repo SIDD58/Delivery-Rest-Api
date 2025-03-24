@@ -11,8 +11,8 @@ mongoose.set('debug', true);
 // connect to databas
 // mongoose.connect(process.env.DATABASE_URL);
 
-//mongoose.connect("mongodb+srv://sidd58:Naruto58@cluster-1.ywzro.mongodb.net/deliveryDB?retryWrites=true&w=majority&appName=Cluster-1");
-mongoose.connect("mongodb+srv://sidd58:Naruto58@cluster1.ik1yb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1");
+mongoose.connect("mongodb+srv://sidd58:Naruto58@cluster-1.ywzro.mongodb.net/deliveryDB?retryWrites=true&w=majority&appName=Cluster-1");
+// mongoose.connect("mongodb+srv://sidd58:Naruto58@cluster1.ik1yb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"); dont use this , it is for the 94 gmail account
 const db=mongoose.connection;
 db.on('error',()=>{console.log("Some error occured")});
 db.once('open',()=>{console.log("Connected to database")});
