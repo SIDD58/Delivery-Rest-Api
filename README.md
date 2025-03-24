@@ -6,10 +6,12 @@ name , delivery place , delivery date.
 
 
 ## Requirements
-Basic Requirements include installing node and mongodb on your machine
+Basic Requirements include installing node and mongodb on your machine.
+Basic Software Installation: Node, MongoDB , Docker 
+Cloud Requirements: Google Cloud (Artifact repository, cloud build, cloud run enabled ) , Mongo Db Atlas M0 cluster  
 
-**Dependencies**: mongoose, dotenv, express  
-**Dev Dependencies**: nodemon
+**Dependencies**: mongoose, dotenv, express,mongodb 
+**Dev Dependencies**: nodemon, jest
 
 ## Installation and Deployment
 
@@ -48,7 +50,11 @@ npm start
 * `PATCH` : Update a delivery record with particular id
 * `DELETE` : Delete a delivery record with particular id
 
+### For more details on the cloud and CI/CD setup keep an eye on my upcoming blogs 
+
 ## Authors
 
 - [@SIDD58](https://github.com/SIDD58)
+
+
 
